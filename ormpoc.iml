@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -22,5 +22,12 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="Maven: com.j256.ormlite:ormlite-android:5.0" level="project" />
+    <orderEntry type="library" name="Maven: com.j256.ormlite:ormlite-core:5.0" level="project" />
+    <orderEntry type="library" name="Maven: com.j256.ormlite:ormlite-jdbc:5.0" level="project" />
+    <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
+    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.4" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.20" level="project" />
+    <orderEntry type="library" name="Maven: org.xerial:sqlite-jdbc:3.14.2" level="project" />
   </component>
 </module>

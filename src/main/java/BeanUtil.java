@@ -13,6 +13,9 @@ public class BeanUtil {
 		header.append("import com.j256.ormlite.table.DatabaseTable;\r\n");
 		header.append("import java.io.Serializable;\r\n");
 		header.append("import java.util.UUID;\r\n");
+		header.append("import java.math.BigDecimal;\r\n");
+		header.append("import java.util.Date;\r\n");
+
 	}
 
 	public BeanUtil() {
@@ -21,7 +24,7 @@ public class BeanUtil {
 	//创建JavaBean文件
 	public String createBean(String tbName, List<Map<String, String>> collist,
 			Map<String, String> infoMap) {
-		
+
 		StringBuilder fields = new StringBuilder();
 		StringBuilder methods = new StringBuilder();
 
@@ -31,7 +34,7 @@ public class BeanUtil {
 			String type = typeTrans(colmap.get("type").toString());
 			colmap.put("finaltype",type);
 			fields.append(getFieldStr(colmap,field, type));
-			methods.append(getMethodStr(field, type));
+			//methods.append(getMethodStr(field, type));
 		}
 
 		classInfo.append("\t*@author jichen");
@@ -71,8 +74,11 @@ public class BeanUtil {
 		if (type.equals("uniqueidentifier")){
 			return "UUID";
 		}else
-		if (type.contains("tinyint")) {
+		if (type.contains("bit")) {
 			return "boolean";
+		}
+		else if (type.contains("tinyint")) {
+			return "byte";
 		} else if (type.contains("int")) {
 			return "int";
 		} else if (type.contains("datetime")) {
@@ -86,7 +92,15 @@ public class BeanUtil {
 			return "String";
 		} else if (type.contains("binary") || type.contains("blob")) {
 			return "byte[]";
-		} else {
+
+		}
+		else if (type.contains("decimal")){
+			return "BigDecimal";
+		}
+		else if (type.contains("image")){
+			return "Serializable";
+		}
+		else {
 			return "Serializable";
 		}
 	}
@@ -138,9 +152,10 @@ public class BeanUtil {
 		//colmap.put("finaltype",colmap.get("type"));
 
 		sb.append("@DatabaseField( ");
+        sb.append(addAttrEntry("columnName =\"" + colmap.get("filed") + "\"", firstAttr));
 		if (colmap.get("primary").equals("YES")){
 			if (colmap.get("type").equals("uniqueidentifier")){
-				sb.append(addAttrEntry("generatedId=true ", firstAttr));
+				sb.append(addAttrEntry("id=true ", firstAttr));
 			}else {
 				sb.append(addAttrEntry("id = true ", firstAttr));
 			}
@@ -150,8 +165,9 @@ public class BeanUtil {
 		}
 
 		if(colmap.get("foreign").equals("YES")){
+			sb.append("/*//TODO: properly handle foreign key*/");
 			sb.append(addAttrEntry("foreign = true ",firstAttr));
-			sb.append(addAttrEntry("columnName ="+colmap.get("foreign_table")+"_"+colmap.get("foreign_field"), firstAttr));
+			sb.append(addAttrEntry("foreignColumnName =\""+colmap.get("foreign_table")+"_"+colmap.get("foreign_field")+"\"", firstAttr));
 			colmap.put("finaltype",colmap.get("foreign_table"));
 		}
 		sb.append(")\r\n");
@@ -163,7 +179,7 @@ public class BeanUtil {
 		StringBuilder sb = new StringBuilder();
 		sb.append(getFieldAttr(colmap));
 		sb.append("\t").append("private ").append(colmap.get("finaltype")).append(" ")
-				.append(field).append(";");
+				.append(field.toLowerCase()).append(";");
 		sb.append("\r\n");
 		return sb.toString();
 	}

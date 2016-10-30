@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ormgen:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ormgen_jar</output-path>
+    <root id="archive" name="ormgen.jar">
+      <element id="module-output" name="ormpoc" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/lib/mysql-connector-java-5.1.16-bin.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/lib/sqljdbc4.jar" path-in-jar="/" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src/lib" />
+    </root>
+  </artifact>
+</component>

@@ -124,6 +124,9 @@ public class DbUtil {
 				"WHERE   c.TABLE_NAME = '"+tabName+"'\n" +
 				"ORDER BY c.ORDINAL_POSITION\n";
 		ResultSet columnRs = st.executeQuery(selColumnSql);
+			if (tabName.equals("CheckMntcDetail")){
+				System.out.println();
+			}
 			while(columnRs.next()){
 				Map<String,String> colMap =  new HashMap<String,String>();
 				colMap.put("filed", columnRs.getString("COLUMN_NAME"));
@@ -142,7 +145,7 @@ public class DbUtil {
 		}
 		return colList;
 	}
-	
+
 	// 读取配置
 	public Map<String,  HashMap<String, String>> getDbConfigMap() {
 	    Map<String, HashMap<String, String>> sectionsMap = new HashMap<String, HashMap<String, String>>();  

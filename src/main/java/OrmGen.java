@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-public class Main {
+public class OrmGen {
     static DbUtil dbutil = new DbUtil();
     static BeanUtil butil = new BeanUtil();
     static HashMap<String, String> dbInfoMap;

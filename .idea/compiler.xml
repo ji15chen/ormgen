@@ -24,7 +24,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="ormgen" />
+        <module name="ormpoc" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ormgen" target="1.5" />
+      <module name="ormpoc" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>

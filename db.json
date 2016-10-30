@@ -1,0 +1,12 @@
+{
+  "localConnection":{
+     "jdbcUrl":"",
+    "user":"sa",
+    "password":"yes"
+  },
+  "remoteConnection":{
+    "jdbcUrl":"",
+    "user":"sa",
+    "password":"yes"
+  }
+}

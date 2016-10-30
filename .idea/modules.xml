@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ormgen.iml" filepath="$PROJECT_DIR$/ormgen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ormpoc.iml" filepath="$PROJECT_DIR$/ormpoc.iml" />
     </modules>
   </component>
 </project>
