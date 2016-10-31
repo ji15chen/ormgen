@@ -37,10 +37,18 @@ public class BeanUtil {
 			//methods.append(getMethodStr(field, type));
 		}
 
+		String schemaClass = upperFirestChar(tbName);
+		String fullSchemaPackage = infoMap.get("packName")+"."+schemaClass;
+		String DaoClass = schemaClass+"Dao";
+		String fullDaoPackage = infoMap.get("daopackName")+"."+DaoClass;
+		String DaoImplClass = DaoClass+"Impl";
+		String FullDaoImplPackage = infoMap.get("daoimplpackName") +"."+ DaoImplClass;
+
 		classInfo.append("\t*@author jichen");
 		classInfo.append("\r\n\t*/\r\n\r\n");
 		classInfo.append(header);
-		classInfo.append("@DatabaseTable(tableName = \""+tbName+"\")\r\n");
+		classInfo.append("import "+FullDaoImplPackage+";\r\n");
+		classInfo.append("@DatabaseTable(tableName = \""+tbName+"\", daoClass ="+ DaoImplClass+".class)\r\n");
 
 		classInfo.append("\tpublic class ").append(upperFirestChar(tbName))
 				.append("{\r\n");
@@ -50,8 +58,9 @@ public class BeanUtil {
 		classInfo.append("\r\n");
 		classInfo.append("}");
 
-		String schemaClass = upperFirestChar(tbName);
-		File file = new File(infoMap.get("catName"),  schemaClass + ".java");
+
+
+		File file = new File(infoMap.get("schemaDir"),  schemaClass + ".java");
 		try {
 			FileWriter fw = new FileWriter(file);
 			if (infoMap.get("packName") == null || infoMap.get("packName").toString().equals("")) {
@@ -71,8 +80,7 @@ public class BeanUtil {
 //			public interface AccountDao extends Dao<Account, String> {
 
 //			}
-			String DaoClass = schemaClass+"Dao";
-			String fullDaoPackage = infoMap.get("daopackName")+"."+DaoClass;
+
 			file = new File(infoMap.get("daoDir"),  DaoClass + ".java");
 			fw = new FileWriter(file);
 			if (infoMap.get("daopackName") == null || infoMap.get("daopackName").toString().equals("")) {
@@ -82,13 +90,14 @@ public class BeanUtil {
 				fw.write(packageinfo);
 			}
 			fw.write("import com.j256.ormlite.dao.Dao;\r\n");
+			fw.write("import "+fullSchemaPackage+";\r\n");
 			fw.write("public interface "+DaoClass + " extends Dao<"+upperFirestChar(tbName)+",String>{\r\n");
 			fw.write("}\r\n");
 			fw.flush();
 			fw.close();
 			//daoimpl
 
-			String DaoImplClass = DaoClass+"Impl";
+
 			file = new File(infoMap.get("daoImplDir"),  DaoImplClass + ".java");
 			fw = new FileWriter(file);
 			if (infoMap.get("daoimplpackName") == null || infoMap.get("daoimplpackName").toString().equals("")) {
@@ -98,7 +107,11 @@ public class BeanUtil {
 				fw.write(packageinfo);
 			}
 			fw.write("import com.j256.ormlite.dao.Dao;\r\n");
+			fw.write("import com.j256.ormlite.dao.BaseDaoImpl;\r\n");
+			fw.write("import java.sql.SQLException;\r\n");
+			fw.write("import com.j256.ormlite.support.ConnectionSource;\r\n");
 			fw.write("import "+fullDaoPackage+";\r\n");
+			fw.write("import "+fullSchemaPackage+";\r\n");
 
 //			/** JDBC implementation of the AccountDao interface. */
 //			public class AccountDaoImpl extends BaseDaoImpl<Account, String>
@@ -112,6 +125,7 @@ public class BeanUtil {
 			fw.write("public class "+ DaoImplClass+" extends BaseDaoImpl<"+schemaClass+",String>{\r\n");
 			fw.write("public "+ DaoImplClass+" (ConnectionSource connectionSource) throws SQLException {\r\n");
 			fw.write("\t	super(connectionSource, "+ schemaClass+".class );\r\n");
+			fw.write("\t	}\r\n");
 			fw.write("}\r\n");
 			fw.flush();
 			fw.close();

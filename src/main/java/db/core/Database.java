@@ -1,23 +1,22 @@
 package db.core;
 
+import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
-import com.sun.org.apache.xpath.internal.operations.Or;
-import db.schema.Account;
-import db.schema.EquipType;
-import db.schema.Order;
+import db.gen.Account;
+import db.gen.Order;
 
-import java.sql.SQLException;
 import java.util.List;
 
 /**
  * Created by jerry on 2016/10/31.
  */
 public class Database {
+    BaseDaoImpl test;
 //    public static void main(String[] args) {
 //        try {
 //            Dao<EquipType,Void> equipTypeDao = DaoManager.createDao(ConnectionSources.getInstance().getLocalConn(), EquipType.class);

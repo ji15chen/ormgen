@@ -1,4 +1,4 @@
-package db.schema;
+package db.genupdate.schema;
 
 	/**
 	*	*@author jichen
@@ -6,20 +6,21 @@ package db.schema;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-
+import java.io.Serializable;
+import java.util.UUID;
 import java.math.BigDecimal;
 import java.util.Date;
-
-@DatabaseTable(tableName = "EquipType")
-	public class EquipType {
-@DatabaseField( columnName ="PkTypeID",id = true ,canBeNull = false )
-	private String pktypeid;
+import db.genupdate.daoimpl.EquipTypeDaoImpl;
+@DatabaseTable(tableName = "EquipType", daoClass =EquipTypeDaoImpl.class)
+	public class EquipType{
+@DatabaseField( columnName ="PkTypeID",id=true ,canBeNull = false )
+	private UUID pktypeid;
 @DatabaseField( columnName ="SupPkTypeID")
-	private String suppktypeid;
-//@DatabaseField( columnName ="DeptID"/*//TODO: properly handle foreign key*/,foreign = true ,columnName ="Department_DeptID")
-//	private String deptid;
-//@DatabaseField( columnName ="UserID"/*//TODO: properly handle foreign key*/,foreign = true ,columnName ="SysUser_UserID")
-//	private String userid;
+	private UUID suppktypeid;
+@DatabaseField( columnName ="DeptID"/*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="Department_DeptID")
+	private Department deptid;
+@DatabaseField( columnName ="UserID"/*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="SysUser_UserID")
+	private SysUser userid;
 @DatabaseField( columnName ="AddDate")
 	private Date adddate;
 @DatabaseField( columnName ="TypeName")
@@ -27,20 +28,21 @@ import java.util.Date;
 @DatabaseField( columnName ="TypeCode")
 	private String typecode;
 @DatabaseField( columnName ="Unit")
-	private String unit;
+	private UUID unit;
 @DatabaseField( columnName ="Scale")
 	private BigDecimal scale;
 @DatabaseField( columnName ="IsEnable")
-	private int isenable;
+	private boolean isenable;
 @DatabaseField( columnName ="Describe")
 	private String describe;
 @DatabaseField( columnName ="CategoryID")
-	private String categoryid;
+	private UUID categoryid;
 @DatabaseField( columnName ="WarrantyPeriod")
 	private int warrantyperiod;
-@DatabaseField( columnName ="Life")
-	private int life;
+@DatabaseField( columnName ="Age")
+	private int age;
 @DatabaseField( columnName ="Count")
 	private BigDecimal count;
+
 
 }

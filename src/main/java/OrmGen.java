@@ -46,7 +46,7 @@ public class OrmGen {
                     String catPack = dbInfoMap.get("catName").toString() + dbInfoMap.get("packName").toString();
                     catPack = catPack.replace(".", "/");
                     new File(catPack).mkdirs();
-                    dbInfoMap.put("catName", catPack);
+                    dbInfoMap.put("schemaDir", catPack);
                 }
                 if (dbInfoMap.get("daopackName") != null && !dbInfoMap.get("daopackName").toString().equals("")) {
                     String catPack = dbInfoMap.get("catName").toString() + dbInfoMap.get("daopackName").toString();
