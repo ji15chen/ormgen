@@ -49,7 +49,9 @@ public class BeanUtil {
 		classInfo.append(methods);
 		classInfo.append("\r\n");
 		classInfo.append("}");
-		File file = new File(infoMap.get("catName"), upperFirestChar(tbName) + ".java");
+
+		String schemaClass = upperFirestChar(tbName);
+		File file = new File(infoMap.get("catName"),  schemaClass + ".java");
 		try {
 			FileWriter fw = new FileWriter(file);
 			if (infoMap.get("packName") == null || infoMap.get("packName").toString().equals("")) {
@@ -60,6 +62,57 @@ public class BeanUtil {
 			}
 			
 			fw.write(classInfo.toString());
+			fw.flush();
+			fw.close();
+
+
+			//dao
+//			/** Account DAO which has a String id (Account.name) */
+//			public interface AccountDao extends Dao<Account, String> {
+
+//			}
+			String DaoClass = schemaClass+"Dao";
+			String fullDaoPackage = infoMap.get("daopackName")+"."+DaoClass;
+			file = new File(infoMap.get("daoDir"),  DaoClass + ".java");
+			fw = new FileWriter(file);
+			if (infoMap.get("daopackName") == null || infoMap.get("daopackName").toString().equals("")) {
+
+			} else {
+				String packageinfo =  "package " + infoMap.get("daopackName").toString() + ";\r\n\r\n";
+				fw.write(packageinfo);
+			}
+			fw.write("import com.j256.ormlite.dao.Dao;\r\n");
+			fw.write("public interface "+DaoClass + " extends Dao<"+upperFirestChar(tbName)+",String>{\r\n");
+			fw.write("}\r\n");
+			fw.flush();
+			fw.close();
+			//daoimpl
+
+			String DaoImplClass = DaoClass+"Impl";
+			file = new File(infoMap.get("daoImplDir"),  DaoImplClass + ".java");
+			fw = new FileWriter(file);
+			if (infoMap.get("daoimplpackName") == null || infoMap.get("daoimplpackName").toString().equals("")) {
+
+			} else {
+				String packageinfo =  "package " + infoMap.get("daoimplpackName").toString() + ";\r\n";
+				fw.write(packageinfo);
+			}
+			fw.write("import com.j256.ormlite.dao.Dao;\r\n");
+			fw.write("import "+fullDaoPackage+";\r\n");
+
+//			/** JDBC implementation of the AccountDao interface. */
+//			public class AccountDaoImpl extends BaseDaoImpl<Account, String>
+//					implements AccountDao {
+//				// this constructor must be defined
+//				public AccountDaoImpl(ConnectionSource connectionSource)
+//						throws SQLException {
+//					super(connectionSource, Account.class);
+//				}
+//			}
+			fw.write("public class "+ DaoImplClass+" extends BaseDaoImpl<"+schemaClass+",String>{\r\n");
+			fw.write("public "+ DaoImplClass+" (ConnectionSource connectionSource) throws SQLException {\r\n");
+			fw.write("\t	super(connectionSource, "+ schemaClass+".class );\r\n");
+			fw.write("}\r\n");
 			fw.flush();
 			fw.close();
 		} catch (IOException e) {
@@ -159,6 +212,7 @@ public class BeanUtil {
 			}else {
 				sb.append(addAttrEntry("id = true ", firstAttr));
 			}
+			colmap.put("primary_type", colmap.get("finaltype"));
 		}
 		if (!colmap.get("nullable").equals("YES")){
 			sb.append(addAttrEntry("canBeNull = false ",firstAttr));

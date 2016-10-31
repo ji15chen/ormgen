@@ -33,8 +33,9 @@ public class OrmGen {
         for (Map.Entry<Object, Object> entry : props.entrySet()) {
             dbInfoMap.put(entry.getKey().toString(), entry.getValue().toString());
         }
+        String basedir = dbInfoMap.get("catName");
 
-        if (dbInfoMap.get("catName") != null) {
+        if (basedir != null) {
             if (dbInfoMap.get("catName").toString().equals("")) {
                 dbInfoMap.put("catName", "D://");
             }
@@ -46,6 +47,18 @@ public class OrmGen {
                     catPack = catPack.replace(".", "/");
                     new File(catPack).mkdirs();
                     dbInfoMap.put("catName", catPack);
+                }
+                if (dbInfoMap.get("daopackName") != null && !dbInfoMap.get("daopackName").toString().equals("")) {
+                    String catPack = dbInfoMap.get("catName").toString() + dbInfoMap.get("daopackName").toString();
+                    catPack = catPack.replace(".", "/");
+                    new File(catPack).mkdirs();
+                    dbInfoMap.put("daoDir", catPack);
+                }
+                if (dbInfoMap.get("daoimplpackName") != null && !dbInfoMap.get("daoimplpackName").toString().equals("")) {
+                    String catPack = dbInfoMap.get("catName").toString() + dbInfoMap.get("daoimplpackName").toString();
+                    catPack = catPack.replace(".", "/");
+                    new File(catPack).mkdirs();
+                    dbInfoMap.put("daoImplDir", catPack);
                 }
                 List<String> tableList = dbutil.getTableNames(dbInfoMap, dbInfoMap.get("dbName").toString());
                 for (int i = 0; i < tableList.size(); i++) {

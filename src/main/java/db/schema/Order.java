@@ -9,12 +9,12 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "orders")
 public class Order {
 
-    public static final String ACCOUNT_ID_FIELD_NAME = "account_id";
+    public static final String ACCOUNT_ID_FIELD_NAME = "account";
 
     @DatabaseField(generatedId = true)
     private int id;
 
-    @DatabaseField(foreign = true, columnName = ACCOUNT_ID_FIELD_NAME)
+    @DatabaseField(foreign = true, columnName = ACCOUNT_ID_FIELD_NAME, foreignColumnName = "id")
     private Account account;
 
     @DatabaseField
