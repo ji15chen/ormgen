@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import com.j256.ormlite.support.ConnectionSource;
 import db.genupdate.dao.CheckMntcInfoDao;
 import db.genupdate.schema.CheckMntcInfo;
-public class CheckMntcInfoDaoImpl extends BaseDaoImpl<CheckMntcInfo,String>{
+public class CheckMntcInfoDaoImpl extends BaseDaoImpl<CheckMntcInfo,java.util.UUID>{
 public CheckMntcInfoDaoImpl (ConnectionSource connectionSource) throws SQLException {
 		super(connectionSource, CheckMntcInfo.class );
 		}

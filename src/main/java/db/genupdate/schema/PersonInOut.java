@@ -15,8 +15,8 @@ import db.genupdate.daoimpl.PersonInOutDaoImpl;
 	public class PersonInOut{
 @DatabaseField( columnName ="PIOID",id=true ,canBeNull = false )
 	private UUID pioid;
-@DatabaseField( columnName ="RoomID"/*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="DepotInfo_RoomID")
-	private DepotInfo roomid;
+@DatabaseField( columnName ="RoomID")
+	private UUID roomid;
 @DatabaseField( columnName ="DeptID")
 	private UUID deptid;
 @DatabaseField( columnName ="PersonID")

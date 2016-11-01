@@ -17,10 +17,10 @@ import db.genupdate.daoimpl.EquipTypeDaoImpl;
 	private UUID pktypeid;
 @DatabaseField( columnName ="SupPkTypeID")
 	private UUID suppktypeid;
-@DatabaseField( columnName ="DeptID"/*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="Department_DeptID")
-	private Department deptid;
-@DatabaseField( columnName ="UserID"/*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="SysUser_UserID")
-	private SysUser userid;
+@DatabaseField( columnName ="DeptID")
+	private UUID deptid;
+@DatabaseField( columnName ="UserID")
+	private UUID userid;
 @DatabaseField( columnName ="AddDate")
 	private Date adddate;
 @DatabaseField( columnName ="TypeName")
@@ -39,10 +39,8 @@ import db.genupdate.daoimpl.EquipTypeDaoImpl;
 	private UUID categoryid;
 @DatabaseField( columnName ="WarrantyPeriod")
 	private int warrantyperiod;
-@DatabaseField( columnName ="Age")
-	private int age;
-@DatabaseField( columnName ="Count")
-	private BigDecimal count;
+@DatabaseField( columnName ="LimitedYear")
+	private int limitedyear;
 
 
 }

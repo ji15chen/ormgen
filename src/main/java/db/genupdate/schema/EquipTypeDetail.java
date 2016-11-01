@@ -15,8 +15,8 @@ import db.genupdate.daoimpl.EquipTypeDetailDaoImpl;
 	public class EquipTypeDetail{
 @DatabaseField( columnName ="ItemID",id=true ,canBeNull = false )
 	private UUID itemid;
-@DatabaseField( columnName ="PkTypeID"/*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="EquipType_PkTypeID")
-	private EquipType pktypeid;
+@DatabaseField( columnName ="PkTypeID")
+	private UUID pktypeid;
 @DatabaseField( columnName ="ItemName")
 	private String itemname;
 @DatabaseField( columnName ="ItemBody")

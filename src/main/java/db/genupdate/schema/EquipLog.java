@@ -13,7 +13,7 @@ import java.util.Date;
 import db.genupdate.daoimpl.EquipLogDaoImpl;
 @DatabaseTable(tableName = "EquipLog", daoClass =EquipLogDaoImpl.class)
 	public class EquipLog{
-@DatabaseField( columnName ="LogID",id=true ,canBeNull = false )
+@DatabaseField( columnName ="LogID")
 	private UUID logid;
 @DatabaseField( columnName ="SupLogID")
 	private UUID suplogid;

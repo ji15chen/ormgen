@@ -13,8 +13,6 @@ import java.util.Date;
 import db.genupdate.daoimpl.CheckMntcDetailDaoImpl;
 @DatabaseTable(tableName = "CheckMntcDetail", daoClass =CheckMntcDetailDaoImpl.class)
 	public class CheckMntcDetail{
-@DatabaseField( columnName ="MtID",canBeNull = false /*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="CheckMntcInfo_MtID")
-	private CheckMntcInfo mtid;
 @DatabaseField( columnName ="MtID",id=true ,canBeNull = false )
 	private UUID mtid;
 @DatabaseField( columnName ="StoreID",id=true ,canBeNull = false )

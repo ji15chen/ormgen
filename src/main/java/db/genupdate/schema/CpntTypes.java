@@ -18,7 +18,7 @@ import db.genupdate.daoimpl.CpntTypesDaoImpl;
 @DatabaseField( columnName ="CpntName")
 	private String cpntname;
 @DatabaseField( columnName ="CpntType")
-	private int cpnttype;
+	private String cpnttype;
 @DatabaseField( columnName ="CpntUnit")
 	private String cpntunit;
 @DatabaseField( columnName ="CpntYear")

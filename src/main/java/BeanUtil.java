@@ -80,7 +80,7 @@ public class BeanUtil {
 //			public interface AccountDao extends Dao<Account, String> {
 
 //			}
-
+			final String IDClass = "java.util.UUID";
 			file = new File(infoMap.get("daoDir"),  DaoClass + ".java");
 			fw = new FileWriter(file);
 			if (infoMap.get("daopackName") == null || infoMap.get("daopackName").toString().equals("")) {
@@ -91,7 +91,7 @@ public class BeanUtil {
 			}
 			fw.write("import com.j256.ormlite.dao.Dao;\r\n");
 			fw.write("import "+fullSchemaPackage+";\r\n");
-			fw.write("public interface "+DaoClass + " extends Dao<"+upperFirestChar(tbName)+",String>{\r\n");
+			fw.write("public interface "+DaoClass + " extends Dao<"+schemaClass+","+IDClass+">{\r\n");
 			fw.write("}\r\n");
 			fw.flush();
 			fw.close();
@@ -122,7 +122,7 @@ public class BeanUtil {
 //					super(connectionSource, Account.class);
 //				}
 //			}
-			fw.write("public class "+ DaoImplClass+" extends BaseDaoImpl<"+schemaClass+",String>{\r\n");
+			fw.write("public class "+ DaoImplClass+" extends BaseDaoImpl<"+schemaClass+","+IDClass+">{\r\n");
 			fw.write("public "+ DaoImplClass+" (ConnectionSource connectionSource) throws SQLException {\r\n");
 			fw.write("\t	super(connectionSource, "+ schemaClass+".class );\r\n");
 			fw.write("\t	}\r\n");
@@ -168,6 +168,8 @@ public class BeanUtil {
 			return "Serializable";
 		}
 		else {
+			System.out.println("Unknown class for"+ type);
+
 			return "Serializable";
 		}
 	}

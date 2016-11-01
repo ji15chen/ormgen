@@ -2,5 +2,5 @@ package db.genupdate.dao;
 
 import com.j256.ormlite.dao.Dao;
 import db.genupdate.schema.SysUser;
-public interface SysUserDao extends Dao<SysUser,String>{
+public interface SysUserDao extends Dao<SysUser,java.util.UUID>{
 }

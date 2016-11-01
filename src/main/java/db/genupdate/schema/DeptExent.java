@@ -15,8 +15,8 @@ import db.genupdate.daoimpl.DeptExentDaoImpl;
 	public class DeptExent{
 @DatabaseField( columnName ="ExentID",id=true ,canBeNull = false )
 	private UUID exentid;
-@DatabaseField( columnName ="DeptID"/*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="Department_DeptID")
-	private Department deptid;
+@DatabaseField( columnName ="DeptID")
+	private UUID deptid;
 @DatabaseField( columnName ="ExentName")
 	private String exentname;
 @DatabaseField( columnName ="ExentValue")

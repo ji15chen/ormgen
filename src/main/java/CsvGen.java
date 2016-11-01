@@ -49,8 +49,9 @@ public class CsvGen {
                         skiped=0;
                         status = 1;
                     }else{
+                        String strCol = StringUtils.join(splited,",");
                         System.out.println(line);
-                        fw.write(line+"\r\n");
+                        fw.write(strCol+"\r\n");
                     }
                 }
                 break;

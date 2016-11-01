@@ -15,8 +15,8 @@ import db.genupdate.daoimpl.SysLogDaoImpl;
 	public class SysLog{
 @DatabaseField( columnName ="LogID",id=true ,canBeNull = false )
 	private UUID logid;
-@DatabaseField( columnName ="UserID"/*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="SysUser_UserID")
-	private SysUser userid;
+@DatabaseField( columnName ="UserID")
+	private UUID userid;
 @DatabaseField( columnName ="ModelID")
 	private UUID modelid;
 @DatabaseField( columnName ="OperateCont")

@@ -17,8 +17,8 @@ import db.genupdate.daoimpl.TmpHmdDataDaoImpl;
 	private UUID hytherid;
 @DatabaseField( columnName ="DeptID")
 	private UUID deptid;
-@DatabaseField( columnName ="RoomID"/*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="DepotInfo_RoomID")
-	private DepotInfo roomid;
+@DatabaseField( columnName ="RoomID")
+	private UUID roomid;
 @DatabaseField( columnName ="RecTime")
 	private Date rectime;
 @DatabaseField( columnName ="Temperature")

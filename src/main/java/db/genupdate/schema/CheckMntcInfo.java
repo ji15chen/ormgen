@@ -15,10 +15,10 @@ import db.genupdate.daoimpl.CheckMntcInfoDaoImpl;
 	public class CheckMntcInfo{
 @DatabaseField( columnName ="MtID",id=true ,canBeNull = false )
 	private UUID mtid;
-@DatabaseField( columnName ="DetpID"/*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="Department_DeptID")
-	private Department detpid;
-@DatabaseField( columnName ="RoomID"/*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="DepotInfo_RoomID")
-	private DepotInfo roomid;
+@DatabaseField( columnName ="DetpID")
+	private UUID detpid;
+@DatabaseField( columnName ="RoomID")
+	private UUID roomid;
 @DatabaseField( columnName ="Topic")
 	private String topic;
 @DatabaseField( columnName ="MtTime")

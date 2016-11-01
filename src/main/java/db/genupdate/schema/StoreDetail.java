@@ -19,8 +19,8 @@ import db.genupdate.daoimpl.StoreDetailDaoImpl;
 	private UUID storepid;
 @DatabaseField( columnName ="StoreCode")
 	private String storecode;
-@DatabaseField( columnName ="DeptID",canBeNull = false /*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="Department_DeptID")
-	private Department deptid;
+@DatabaseField( columnName ="DeptID",canBeNull = false )
+	private UUID deptid;
 @DatabaseField( columnName ="RFID")
 	private String rfid;
 @DatabaseField( columnName ="RoomID")

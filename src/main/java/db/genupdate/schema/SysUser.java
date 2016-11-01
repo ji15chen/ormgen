@@ -13,14 +13,12 @@ import java.util.Date;
 import db.genupdate.daoimpl.SysUserDaoImpl;
 @DatabaseTable(tableName = "SysUser", daoClass =SysUserDaoImpl.class)
 	public class SysUser{
-@DatabaseField( columnName ="UserID",canBeNull = false /*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="PersonInfo_PersonID")
-	private PersonInfo userid;
 @DatabaseField( columnName ="UserID",id=true ,canBeNull = false )
 	private UUID userid;
-@DatabaseField( columnName ="DeptID"/*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="Department_DeptID")
-	private Department deptid;
-@DatabaseField( columnName ="RoleID"/*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="SysRole_RoleID")
-	private SysRole roleid;
+@DatabaseField( columnName ="DeptID")
+	private UUID deptid;
+@DatabaseField( columnName ="RoleID")
+	private UUID roleid;
 @DatabaseField( columnName ="UserName")
 	private String username;
 @DatabaseField( columnName ="LoginID")
@@ -29,10 +27,10 @@ import db.genupdate.daoimpl.SysUserDaoImpl;
 	private String password;
 @DatabaseField( columnName ="UseState")
 	private boolean usestate;
-@DatabaseField( columnName ="Updator")
-	private UUID updator;
-@DatabaseField( columnName ="UpdateTime")
-	private Date updatetime;
+@DatabaseField( columnName ="ChangeUserID")
+	private UUID changeuserid;
+@DatabaseField( columnName ="ChangeDate")
+	private Date changedate;
 
 
 }

@@ -33,18 +33,18 @@ import db.genupdate.daoimpl.DepartmentDaoImpl;
 	private int dwye;
 @DatabaseField( columnName ="DeptLevel")
 	private UUID deptlevel;
-@DatabaseField( columnName ="Dwzl"/*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="SysParameter_ParaID")
-	private SysParameter dwzl;
+@DatabaseField( columnName ="Dwzl")
+	private UUID dwzl;
 @DatabaseField( columnName ="FirstMgr")
 	private UUID firstmgr;
 @DatabaseField( columnName ="Descirbe")
 	private String descirbe;
 @DatabaseField( columnName ="IsEnable")
 	private boolean isenable;
-@DatabaseField( columnName ="CreateUser")
-	private UUID createuser;
-@DatabaseField( columnName ="UpdateTime")
-	private Date updatetime;
+@DatabaseField( columnName ="CreateUserID")
+	private UUID createuserid;
+@DatabaseField( columnName ="ChangeDate")
+	private Date changedate;
 
 
 }

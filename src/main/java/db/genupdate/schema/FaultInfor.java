@@ -13,28 +13,28 @@ import java.util.Date;
 import db.genupdate.daoimpl.FaultInforDaoImpl;
 @DatabaseTable(tableName = "FaultInfor", daoClass =FaultInforDaoImpl.class)
 	public class FaultInfor{
-@DatabaseField( columnName ="FaultRepotPK")
-	private UUID faultrepotpk;
-@DatabaseField( columnName ="StorePK"/*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="StoreDetail_StoreID")
-	private StoreDetail storepk;
+@DatabaseField( columnName ="FaultID",id=true ,canBeNull = false )
+	private UUID faultid;
+@DatabaseField( columnName ="StoreID")
+	private UUID storeid;
 @DatabaseField( columnName ="FaultTitle")
 	private String faulttitle;
-@DatabaseField( columnName ="FaultTypePK")
-	private UUID faulttypepk;
-@DatabaseField( columnName ="FaultKeyword")
-	private String faultkeyword;
+@DatabaseField( columnName ="FaultType")
+	private UUID faulttype;
+@DatabaseField( columnName ="FaultKey")
+	private String faultkey;
 @DatabaseField( columnName ="FaultDesc")
 	private String faultdesc;
-@DatabaseField( columnName ="FaultReportDeptPK")
-	private UUID faultreportdeptpk;
-@DatabaseField( columnName ="FaultReportUserPK")
-	private UUID faultreportuserpk;
-@DatabaseField( columnName ="FaultReportTime")
-	private Date faultreporttime;
-@DatabaseField( columnName ="FaultReportStatus")
-	private int faultreportstatus;
-@DatabaseField( columnName ="FaultStoreCnt")
-	private BigDecimal faultstorecnt;
+@DatabaseField( columnName ="DeptID")
+	private UUID deptid;
+@DatabaseField( columnName ="UserID")
+	private UUID userid;
+@DatabaseField( columnName ="CreateDate")
+	private Date createdate;
+@DatabaseField( columnName ="FaultState")
+	private int faultstate;
+@DatabaseField( columnName ="EquipCount")
+	private BigDecimal equipcount;
 
 
 }

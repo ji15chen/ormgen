@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import com.j256.ormlite.support.ConnectionSource;
 import db.genupdate.dao.ScanStoreDetailDao;
 import db.genupdate.schema.ScanStoreDetail;
-public class ScanStoreDetailDaoImpl extends BaseDaoImpl<ScanStoreDetail,String>{
+public class ScanStoreDetailDaoImpl extends BaseDaoImpl<ScanStoreDetail,java.util.UUID>{
 public ScanStoreDetailDaoImpl (ConnectionSource connectionSource) throws SQLException {
 		super(connectionSource, ScanStoreDetail.class );
 		}

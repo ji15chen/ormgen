@@ -15,8 +15,10 @@ import db.genupdate.daoimpl.ScanStoreDetailDaoImpl;
 	public class ScanStoreDetail{
 @DatabaseField( columnName ="DetailID",id=true ,canBeNull = false )
 	private UUID detailid;
-@DatabaseField( columnName ="StoreID",canBeNull = false /*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="StoreDetail_StoreID")
-	private StoreDetail storeid;
+@DatabaseField( columnName ="ScanID",canBeNull = false )
+	private UUID scanid;
+@DatabaseField( columnName ="StoreID",canBeNull = false )
+	private UUID storeid;
 @DatabaseField( columnName ="ScanType")
 	private UUID scantype;
 @DatabaseField( columnName ="Descn")

@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import com.j256.ormlite.support.ConnectionSource;
 import db.genupdate.dao.ExtendTypeDao;
 import db.genupdate.schema.ExtendType;
-public class ExtendTypeDaoImpl extends BaseDaoImpl<ExtendType,String>{
+public class ExtendTypeDaoImpl extends BaseDaoImpl<ExtendType,java.util.UUID>{
 public ExtendTypeDaoImpl (ConnectionSource connectionSource) throws SQLException {
 		super(connectionSource, ExtendType.class );
 		}

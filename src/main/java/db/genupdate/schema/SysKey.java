@@ -15,8 +15,8 @@ import db.genupdate.daoimpl.SysKeyDaoImpl;
 	public class SysKey{
 @DatabaseField( columnName ="KeyID",id=true ,canBeNull = false )
 	private UUID keyid;
-@DatabaseField( columnName ="MenuID"/*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="SysMenu_MenuID")
-	private SysMenu menuid;
+@DatabaseField( columnName ="MenuID")
+	private UUID menuid;
 @DatabaseField( columnName ="KeyName")
 	private String keyname;
 @DatabaseField( columnName ="KeyCode")

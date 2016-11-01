@@ -13,8 +13,8 @@ import java.util.Date;
 import db.genupdate.daoimpl.DepotInfoDaoImpl;
 @DatabaseTable(tableName = "DepotInfo", daoClass =DepotInfoDaoImpl.class)
 	public class DepotInfo{
-@DatabaseField( columnName ="DeptID",canBeNull = false /*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="Department_DeptID")
-	private Department deptid;
+@DatabaseField( columnName ="DeptID",canBeNull = false )
+	private UUID deptid;
 @DatabaseField( columnName ="RoomID",id=true ,canBeNull = false )
 	private UUID roomid;
 @DatabaseField( columnName ="RoomName")
@@ -29,10 +29,10 @@ import db.genupdate.daoimpl.DepotInfoDaoImpl;
 	private UUID lever;
 @DatabaseField( columnName ="Describe")
 	private String describe;
-@DatabaseField( columnName ="ConditionerCnt")
-	private int conditionercnt;
-@DatabaseField( columnName ="FogRemoverCnt")
-	private int fogremovercnt;
+@DatabaseField( columnName ="AirconCount")
+	private int airconcount;
+@DatabaseField( columnName ="DehCount")
+	private int dehcount;
 
 
 }

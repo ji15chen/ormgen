@@ -15,8 +15,8 @@ import db.genupdate.daoimpl.EqmtInOutDaoImpl;
 	public class EqmtInOut{
 @DatabaseField( columnName ="EIOID",id=true ,canBeNull = false )
 	private UUID eioid;
-@DatabaseField( columnName ="PIOID"/*//TODO: properly handle foreign key*/,foreign = true ,foreignColumnName ="PersonInOut_PIOID")
-	private PersonInOut pioid;
+@DatabaseField( columnName ="PIOID")
+	private UUID pioid;
 @DatabaseField( columnName ="StoreID",canBeNull = false )
 	private UUID storeid;
 @DatabaseField( columnName ="Reason")

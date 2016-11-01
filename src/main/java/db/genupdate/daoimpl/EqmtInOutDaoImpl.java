@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import com.j256.ormlite.support.ConnectionSource;
 import db.genupdate.dao.EqmtInOutDao;
 import db.genupdate.schema.EqmtInOut;
-public class EqmtInOutDaoImpl extends BaseDaoImpl<EqmtInOut,String>{
+public class EqmtInOutDaoImpl extends BaseDaoImpl<EqmtInOut,java.util.UUID>{
 public EqmtInOutDaoImpl (ConnectionSource connectionSource) throws SQLException {
 		super(connectionSource, EqmtInOut.class );
 		}

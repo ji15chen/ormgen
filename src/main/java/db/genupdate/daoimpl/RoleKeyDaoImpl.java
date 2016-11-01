@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import com.j256.ormlite.support.ConnectionSource;
 import db.genupdate.dao.RoleKeyDao;
 import db.genupdate.schema.RoleKey;
-public class RoleKeyDaoImpl extends BaseDaoImpl<RoleKey,String>{
+public class RoleKeyDaoImpl extends BaseDaoImpl<RoleKey,java.util.UUID>{
 public RoleKeyDaoImpl (ConnectionSource connectionSource) throws SQLException {
 		super(connectionSource, RoleKey.class );
 		}

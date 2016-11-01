@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import com.j256.ormlite.support.ConnectionSource;
 import db.genupdate.dao.DepotInfoDao;
 import db.genupdate.schema.DepotInfo;
-public class DepotInfoDaoImpl extends BaseDaoImpl<DepotInfo,String>{
+public class DepotInfoDaoImpl extends BaseDaoImpl<DepotInfo,java.util.UUID>{
 public DepotInfoDaoImpl (ConnectionSource connectionSource) throws SQLException {
 		super(connectionSource, DepotInfo.class );
 		}

@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import com.j256.ormlite.support.ConnectionSource;
 import db.genupdate.dao.RoleMenuDao;
 import db.genupdate.schema.RoleMenu;
-public class RoleMenuDaoImpl extends BaseDaoImpl<RoleMenu,String>{
+public class RoleMenuDaoImpl extends BaseDaoImpl<RoleMenu,java.util.UUID>{
 public RoleMenuDaoImpl (ConnectionSource connectionSource) throws SQLException {
 		super(connectionSource, RoleMenu.class );
 		}

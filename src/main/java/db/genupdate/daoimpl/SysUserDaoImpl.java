@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import com.j256.ormlite.support.ConnectionSource;
 import db.genupdate.dao.SysUserDao;
 import db.genupdate.schema.SysUser;
-public class SysUserDaoImpl extends BaseDaoImpl<SysUser,String>{
+public class SysUserDaoImpl extends BaseDaoImpl<SysUser,java.util.UUID>{
 public SysUserDaoImpl (ConnectionSource connectionSource) throws SQLException {
 		super(connectionSource, SysUser.class );
 		}
