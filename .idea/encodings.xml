@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
-    <file url="file://$PROJECT_DIR$/All.csv" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/All.csv" charset="GB2312" />
-    <file url="file://$PROJECT_DIR$/All.csv" charset="GB2312" />
-    <file url="file://$PROJECT_DIR$/All.txt" charset="GBK" />
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/src/main/java/BeanUtil.java" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

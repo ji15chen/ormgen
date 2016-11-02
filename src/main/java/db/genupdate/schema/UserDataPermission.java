@@ -13,9 +13,11 @@ import java.util.Date;
 import db.genupdate.daoimpl.UserDataPermissionDaoImpl;
 @DatabaseTable(tableName = "UserDataPermission", daoClass =UserDataPermissionDaoImpl.class)
 	public class UserDataPermission{
-@DatabaseField( columnName ="RoleID",id=true ,canBeNull = false )
+	@DatabaseField(generatedId=true ,canBeNull = false )
+	private UUID id;
+@DatabaseField( columnName ="RoleID",id=false ,canBeNull = false )
 	private UUID roleid;
-@DatabaseField( columnName ="PkTypeID",id=true ,canBeNull = false )
+@DatabaseField( columnName ="PkTypeID",id=false ,canBeNull = false )
 	private UUID pktypeid;
 
 

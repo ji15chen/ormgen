@@ -4,6 +4,7 @@ package db.genupdate.schema;
 	*	*@author jichen
 	*/
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import java.io.Serializable;
@@ -19,7 +20,7 @@ import db.genupdate.daoimpl.M_PointDaoImpl;
 	private String pointname;
 @DatabaseField( columnName ="PointType")
 	private int pointtype;
-@DatabaseField( columnName ="PointImage")
+@DatabaseField( columnName ="PointImage", dataType = DataType.SERIALIZABLE)
 	private Serializable pointimage;
 @DatabaseField( columnName ="Longitude")
 	private BigDecimal longitude;

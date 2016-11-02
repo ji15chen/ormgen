@@ -9,30 +9,103 @@ import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import db.gen.Account;
 import db.gen.Order;
-
+import db.genupdate.schema.*;
+import db.genupdate.daoimpl.*;
 import java.util.List;
 
 /**
  * Created by jerry on 2016/10/31.
  */
 public class Database {
-    BaseDaoImpl test;
-//    public static void main(String[] args) {
-//        try {
-//            Dao<EquipType,Void> equipTypeDao = DaoManager.createDao(ConnectionSources.getInstance().getLocalConn(), EquipType.class);
-//            TableUtils.createTable(ConnectionSources.getInstance().getLocalConn(), EquipType.class);
-//            for (EquipType equipType : equipTypeDao) {
-//                System.out.println(equipType);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
     // we are using the in-memory H2 database
     private final static String DATABASE_URL = "jdbc:sqlite://e:/tim.db";//"jdbc:h2:mem:account";
+    private static final Class schemaClasses [] ={
+            CheckMntcDetail.class,
+            CheckMntcInfo.class,
+            CpntTypes.class,
+            Department.class,
+            DepotInfo.class,
+            DeptExent.class,
+            ECFactory.class,
+            EqmtCpntInfo.class,
+            EqmtInOut.class,
+            EquipLog.class,
+            EquipType.class,
+            EquipTypeDetail.class,
+            ExentData.class,
+            ExtendType.class,
+            FactoryInfo.class,
+            FaultInfor.class,
+            M_Point.class,
+            PersonInfo.class,
+            PersonInOut.class,
+            RoleKey.class,
+            RoleMenu.class,
+            RoomAdminUser.class,
+            ScanStore.class,
+            ScanStoreDetail.class,
+            ScanStoreEquipType.class,
+            StoreDetail.class,
+            StoreExtendChange.class,
+            Sysdiagrams.class,
+            SysFileInfo.class,
+            SysKey.class,
+            SysLog.class,
+            SysMenu.class,
+            SysParameter.class,
+            SysRole.class,
+            SysUser.class,
+            TmpHmdData.class,
+            UserCard.class,
+            UserDataPermission.class,
+            Workers.class
+    };
 
-    private Dao<Account, Integer> accountDao;
-    private Dao<Order, Integer> orderDao;
+    private static final Class [] daoImplClasses = {
+            CheckMntcDetailDaoImpl.class,
+            CheckMntcInfoDaoImpl.class,
+            CpntTypesDaoImpl.class,
+            DepartmentDaoImpl.class,
+            DepotInfoDaoImpl.class,
+            DeptExentDaoImpl.class,
+            ECFactoryDaoImpl.class,
+            EqmtCpntInfoDaoImpl.class,
+            EqmtInOutDaoImpl.class,
+            EquipLogDaoImpl.class,
+            EquipTypeDaoImpl.class,
+            EquipTypeDetailDaoImpl.class,
+            ExentDataDaoImpl.class,
+            ExtendTypeDaoImpl.class,
+            FactoryInfoDaoImpl.class,
+            FaultInforDaoImpl.class,
+            M_PointDaoImpl.class,
+            PersonInfoDaoImpl.class,
+            PersonInOutDaoImpl.class,
+            RoleKeyDaoImpl.class,
+            RoleMenuDaoImpl.class,
+            RoomAdminUserDaoImpl.class,
+            ScanStoreDaoImpl.class,
+            ScanStoreDetailDaoImpl.class,
+            ScanStoreEquipTypeDaoImpl.class,
+            StoreDetailDaoImpl.class,
+            StoreExtendChangeDaoImpl.class,
+            SysdiagramsDaoImpl.class,
+            SysFileInfoDaoImpl.class,
+            SysKeyDaoImpl.class,
+            SysLogDaoImpl.class,
+            SysMenuDaoImpl.class,
+            SysParameterDaoImpl.class,
+            SysRoleDaoImpl.class,
+            SysUserDaoImpl.class,
+            TmpHmdDataDaoImpl.class,
+            UserCardDaoImpl.class,
+            UserDataPermissionDaoImpl.class,
+            WorkersDaoImpl.class
+    };
+
+    private StoreDetailDaoImpl storeDetailDao;
+
+
     public static void main(String[] args) throws Exception {
         // turn our static method into an instance of Main
         Database db = new Database();
@@ -47,7 +120,7 @@ public class Database {
             // setup our database and DAOs
             setupDatabase(connectionSource);
 //            // read and write some data
-            readWriteData();
+//            readWriteData();
 //            // do a bunch of bulk operations
 //            readWriteBunch();
 //            // show how to use the SelectArg object
@@ -63,47 +136,28 @@ public class Database {
         }
     }
 
-    private void readWriteData() throws Exception {
-        // create an instance of Account
-        String name = "Buzz Lightyear";
-        Account account = new Account(name);
-
-        // persist the account object to the database
-        accountDao.create(account);
-
-        // create an associated Order for the Account
-        // Buzz bought 2 of item #21312 for a price of $12.32
-        int quantity1 = 2;
-        int itemNumber1 = 21312;
-        float price1 = 12.32F;
-        Order order1 = new Order(account, itemNumber1, price1, quantity1);
-        orderDao.create(order1);
-
-        // create another Order for the Account
-        // Buzz also bought 1 of item #785 for a price of $7.98
-        int quantity2 = 1;
-        int itemNumber2 = 785;
-        float price2 = 7.98F;
-        Order order2 = new Order(account, itemNumber2, price2, quantity2);
-        orderDao.create(order2);
-
-        // construct a query using the QueryBuilder
-        QueryBuilder<Order, Integer> statementBuilder = orderDao.queryBuilder();
-        // should find both of the orders that match the account
-        // ORMLite extracts the id from the account for the query automagically
-        statementBuilder.where().eq(Order.ACCOUNT_ID_FIELD_NAME, account);
-        List<Order> orders = orderDao.query(statementBuilder.prepare());
+    private void readWriteTest() throws Exception {
+//        // construct a query using the QueryBuilder
+//        QueryBuilder<Order, Integer> statementBuilder = orderDao.queryBuilder();
+//        // should find both of the orders that match the account
+//        // ORMLite extracts the id from the account for the query automagically
+//        statementBuilder.where().eq(Order.ACCOUNT_ID_FIELD_NAME, account);
+//        List<Order> orders = orderDao.query(statementBuilder.prepare());
+//        for(BaseDaoImpl daoImplClass:daoImplClasses){
+//
+//        }
     }
     /**
      * Setup our database and DAOs
      */
     private void setupDatabase(ConnectionSource connectionSource) throws Exception {
-
-        accountDao = DaoManager.createDao(connectionSource, Account.class);
-        orderDao = DaoManager.createDao(connectionSource, Order.class);
-        // if you need to create the table
-        TableUtils.createTable(connectionSource, Account.class);
-        TableUtils.createTable(connectionSource, Order.class);
+        for (Class schemaClass:schemaClasses){
+            TableUtils.createTableIfNotExists(connectionSource, schemaClass);
+        }
+        storeDetailDao = new StoreDetailDaoImpl(connectionSource);
+        for (StoreDetail storeDetail:storeDetailDao){
+            System.out.println(storeDetail);
+        }
     }
 
 //    /**

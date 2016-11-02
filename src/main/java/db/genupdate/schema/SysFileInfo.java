@@ -4,6 +4,7 @@ package db.genupdate.schema;
 	*	*@author jichen
 	*/
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import java.io.Serializable;
@@ -27,8 +28,8 @@ import db.genupdate.daoimpl.SysFileInfoDaoImpl;
 	private String extension;
 @DatabaseField( columnName ="FileSize")
 	private String filesize;
-@DatabaseField( columnName ="FileData")
-	private Serializable filedata;
+@DatabaseField( columnName ="FileData", dataType = DataType.BYTE_ARRAY)
+	private byte[] filedata;
 @DatabaseField( columnName ="CategoryID")
 	private int categoryid;
 @DatabaseField( columnName ="Descn")

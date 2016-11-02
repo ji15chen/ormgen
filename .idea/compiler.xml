@@ -27,9 +27,8 @@
         <module name="ormpoc" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="ormgen" target="1.5" />
-      <module name="ormpoc" target="1.5" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="ormpoc" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

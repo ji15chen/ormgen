@@ -4,6 +4,7 @@ package db.genupdate.schema;
 	*	*@author jichen
 	*/
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import java.io.Serializable;
@@ -49,8 +50,8 @@ import db.genupdate.daoimpl.PersonInfoDaoImpl;
 	private UUID deptid;
 @DatabaseField( columnName ="Work")
 	private String work;
-@DatabaseField( columnName ="HeadImage")
-	private Serializable headimage;
+@DatabaseField( columnName ="HeadImage", dataType = DataType.BYTE_ARRAY)
+	private byte[] headimage;
 
 
 }

@@ -13,11 +13,13 @@ import java.util.Date;
 import db.genupdate.daoimpl.RoleKeyDaoImpl;
 @DatabaseTable(tableName = "RoleKey", daoClass =RoleKeyDaoImpl.class)
 	public class RoleKey{
-@DatabaseField( columnName ="RoleID",id=true ,canBeNull = false )
+	@DatabaseField(id=true ,canBeNull = false )
+	private UUID id;
+	@DatabaseField( columnName ="RoleID",id=false ,canBeNull = false )
 	private UUID roleid;
-@DatabaseField( columnName ="KeyID",id=true ,canBeNull = false )
+@DatabaseField( columnName ="KeyID",id=false ,canBeNull = false )
 	private UUID keyid;
-@DatabaseField( columnName ="MenuID",id=true ,canBeNull = false )
+@DatabaseField( columnName ="MenuID",id=false ,canBeNull = false )
 	private UUID menuid;
 
 

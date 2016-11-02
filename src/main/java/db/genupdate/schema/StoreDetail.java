@@ -42,15 +42,15 @@ import db.genupdate.daoimpl.StoreDetailDaoImpl;
 @DatabaseField( columnName ="InDepot")
 	private UUID indepot;
 @DatabaseField( columnName ="ProduceDate",canBeNull = false )
-	private Date producedate;
+	private String producedate;
 @DatabaseField( columnName ="PurchaseDate")
-	private Date purchasedate;
+	private String purchasedate;
 @DatabaseField( columnName ="UseDate")
-	private Date usedate;
+	private String usedate;
 @DatabaseField( columnName ="AddType")
 	private String addtype;
 @DatabaseField( columnName ="OtherDate")
-	private Date otherdate;
+	private String otherdate;
 
 
 }

@@ -13,9 +13,11 @@ import java.util.Date;
 import db.genupdate.daoimpl.RoleMenuDaoImpl;
 @DatabaseTable(tableName = "RoleMenu", daoClass =RoleMenuDaoImpl.class)
 	public class RoleMenu{
-@DatabaseField( columnName ="RoleID",id=true ,canBeNull = false )
+	@DatabaseField( id=true ,canBeNull = false )
+	private UUID id;
+	@DatabaseField( columnName ="RoleID",id=false ,canBeNull = false )
 	private UUID roleid;
-@DatabaseField( columnName ="MenuID",id=true ,canBeNull = false )
+@DatabaseField( columnName ="MenuID",id=false ,canBeNull = false )
 	private UUID menuid;
 
 

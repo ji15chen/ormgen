@@ -13,9 +13,11 @@ import java.util.Date;
 import db.genupdate.daoimpl.WorkersDaoImpl;
 @DatabaseTable(tableName = "Workers", daoClass =WorkersDaoImpl.class)
 	public class Workers{
-@DatabaseField( columnName ="PIOID",id=true ,canBeNull = false )
+	@DatabaseField(generatedId=true ,canBeNull = false )
+	private UUID id;
+@DatabaseField( columnName ="PIOID",id=false ,canBeNull = false )
 	private UUID pioid;
-@DatabaseField( columnName ="PersonID",id=true ,canBeNull = false )
+@DatabaseField( columnName ="PersonID",id=false ,canBeNull = false )
 	private UUID personid;
 
 

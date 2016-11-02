@@ -13,9 +13,9 @@ import java.util.Date;
 import db.genupdate.daoimpl.ECFactoryDaoImpl;
 @DatabaseTable(tableName = "ECFactory", daoClass =ECFactoryDaoImpl.class)
 	public class ECFactory{
-@DatabaseField( columnName ="RecID",id=true ,canBeNull = false )
+@DatabaseField( columnName ="RecID",id=false ,canBeNull = false )
 	private UUID recid;
-@DatabaseField( columnName ="FactoryID",id=true ,canBeNull = false )
+@DatabaseField( columnName ="FactoryID",id=false ,canBeNull = false )
 	private UUID factoryid;
 @DatabaseField( columnName ="PkTypeID")
 	private UUID pktypeid;
@@ -25,4 +25,14 @@ import db.genupdate.daoimpl.ECFactoryDaoImpl;
 	private String describe;
 
 
+	@DatabaseField(id=true, useGetSet=true)
+	private UUID id;
+
+	public UUID getId() {
+		return new UUID(recid.getMostSignificantBits()+factoryid.getMostSignificantBits(), recid.getLeastSignificantBits()+factoryid.getLeastSignificantBits());
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
+	}
 }

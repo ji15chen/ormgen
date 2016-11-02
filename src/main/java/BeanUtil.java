@@ -34,7 +34,7 @@ public class BeanUtil {
 			String type = typeTrans(colmap.get("type").toString());
 			colmap.put("finaltype",type);
 			fields.append(getFieldStr(colmap,field, type));
-			//methods.append(getMethodStr(field, type));
+			methods.append(getMethodStr(field, type));
 		}
 
 		String schemaClass = upperFirestChar(tbName);
